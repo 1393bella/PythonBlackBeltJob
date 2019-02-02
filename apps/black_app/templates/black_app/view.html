@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>View Jobs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="main.js"></script>
+    <style>
+        #box{
+            border: 2px black solid; 
+            width: 40%;
+            margin-left: 20px;
+            margin-top: 30px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+        }
+        #topBox{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body> 
+        <br>
+        <div id="topBox">
+            <a href="/back" class="badge badge-secondary">Back</a>
+            <br>
+            <a href="/logout" class="badge badge-primary">Log Out</a>
+        </div>
+
+        
+    
+       
+        <div id="box">
+            <br><br>
+            <h2> {{job.title}}</h2>
+            <h2>{{job.location}}</h2>
+            <h3>Description:{{job.description}}</h3>
+            <br>
+            <p>Posts by: {{job.created_by.first_name}} {{job.created_by.last_name}}</p>
+            <br>
+            <p>Posted on: {{job.created_at}}</p>
+            {% if not took %}
+                <a href="/add_job/{{job.id}}" class="badge badge-warning">Add to My Jobs</a>
+            {% endif %}
+        </div>
+
+</body>
+</html>

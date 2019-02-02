@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="main.js"></script>
+    <style>
+        #container{
+            width:100%;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <br>
+        <div id="container">
+                
+                <h1>Success! Welcome, {{user.first_name}}</h1>
+                <a href="/logout" class="badge badge-primary">Log Out</a>
+                <br><br>
+                <a href="/create_job" class="badge badge-success">Add Job</a>
+        
+
+                <br><br>
+            <div class="row">
+                <div class="col">
+                        <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Job</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <!-- used to be all_jobs inside of for loop , esli my hoteli dobavit job v my job(kotoroe spisok dobavlennuh rabot) ne udalyya s database-->
+                                {% for Z in open_jobs %} 
+                                <tbody>
+                                    
+                                        <th scope="row">#</th>
+                                        <th>{{Z.title}}</th>
+                                        <td>{{Z.location}}</td>
+                                        
+                                        <td><a href="/view/{{Z.id}}">View</a></td>
+                                        <td><a href="/add_job/{{Z.id}}">Add</a></td>
+
+                                        {% if Z.created_by == user %}
+                                            <td><a href="/edit/{{Z.id}}">Edit</a></td>
+                                        
+                                            <td><a href="/cancel/{{Z.id}}">Cancel</a></td>
+                                        {% endif %}
+                                </tbody>
+                                {% endfor %}
+                                
+                        </table>
+                </div>
+                
+                <div class="col">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">My Jobs</th>
+                                </tr>
+                            </thead>
+
+                            {% for Z in my_jobs %}
+                                <tbody>
+                                
+                                    <th scope="row">{{Z.title}}</th>
+                                    <td>{{Z.job_name}}</td>
+                                    <td><a href="/view/{{Z.id}}">View</a></td>
+                                    <td><a href="/done/{{Z.id}}">Done</a></td>
+                                </tbody>
+                            {% endfor %}
+                        </div>
+                    </div>
+            </div>
+    </body>
+</html>

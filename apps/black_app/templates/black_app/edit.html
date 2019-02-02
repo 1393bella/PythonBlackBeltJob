@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Job</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+        
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <br>
+                    <div id="topBox">
+                            <a href="/back" class="badge badge-secondary">Back</a>
+                            <br>
+                            <a href="/logout" class="badge badge-primary">Log Out</a>
+                        </div>
+                <br>
+                <h1>Edit Your Job Posting</h1>
+                <br><br>
+                <form action="/edit/{{job.id}}" method="POST">
+                    {% csrf_token %}
+
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="title" value="{{job.title}}" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea type="description" class="form-control" name="description" value="{{job.description}}"
+                                placeholder="Description"></textarea>
+                        </div>
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Location</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="location" value="{{job.location}}"
+                                placeholder="Location">
+                        </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+            <div class="col">
+                    <!-- and there is a space right column -->
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- <label>Title</label>
+        <input type="text" name="title" value="{{job.title}}" required/>
+        <br><br><br>
+        <label>Description</label>
+        <textarea name="description" cols="30" rows="10" value="{{job.description}}" required></textarea>
+        <br><br>
+        <label>Location</label>
+        <input type="text" name="location" value="{{job.location}}" required/>
+        <button type="button" class="btn btn-success">Submit</button>
+        </form> -->
+
+
+
+</body>
+
+</html>
