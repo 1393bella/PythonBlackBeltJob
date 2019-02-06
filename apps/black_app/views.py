@@ -111,11 +111,11 @@ def deleteFromList(request,id):
     return redirect('/dashboard')
 
 def deleteFromMyList(request,id):
-    user = User.objects.get(id=request.session['id'])
-    job_mylist = Job.objects.get(id=id)
-    user.added_jobs.remove(job_mylist)
-    # job = Job.objects.get(id=id)
-    # job.delete() 
+    # user = User.objects.get(id=request.session['id'])
+    # job_mylist = Job.objects.get(id=id)
+    # user.added_jobs.remove(job_mylist)
+    job = Job.objects.get(id=id)
+    job.delete() 
     # this tho lines of code let the "delete button " to delete in my list and DB(database)odnovremenno , but i have uncomment 3 lines above 
     return redirect('/dashboard')
 

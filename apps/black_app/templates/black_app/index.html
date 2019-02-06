@@ -3,22 +3,32 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Job Post Page in city 312</title>
+    <meta name="description" content="Job Post Page in the city 312 , Chicago . Easy and Fast to post your job or get a job !">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="main.js"></script>
     <style>
-    /* #bigbox{
-        display: inline-block;
+        
+        .messages{
+        color: red;
+        margin-left: 45px;
     }
-    .container p-3{
-        display: inline-block;
-    } */
+
     </style>
 
 </head>
 <body>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
 <div id="bigbox">    
         <div class="container p-3">
             <form class="w-25" action='/register' method="POST">
